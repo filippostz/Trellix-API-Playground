@@ -204,7 +204,8 @@ def main():
                     total_count = results.get('meta', {}).get('totalResourceCount', len(items))
 
                     print(f"Results: {total_count} total items found ({results_per_page} per page).")
-
+                    print(f"Preview page 01")
+                    
                     activities = [
                         item.get("attributes", {}).get("Activity", "Unknown")
                         for item in items
@@ -220,4 +221,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()
