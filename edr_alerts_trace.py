@@ -190,10 +190,11 @@ def main():
                 print(f"\nTarget: {date} | Host: {host}")
                 print(f"Processes: {', '.join(sorted(data['processes']))}")
                 print(f"Rules: {', '.join(sorted(data['rules']))}")
-                print(f"Tags: {', '.join(sorted(data['tags']))}")  # <--- Tags restored here
+                print(f"Tags: {', '.join(sorted(data['tags']))}")
 
                 try:
                     start_t, end_t = get_time_range(date, search_window_minutes)
+                    #seach query support for  ['DeviceName', 'ProcessName', 'CommandLine', 'IpAddress', 'Sha256', 'MD5', 'Sha1']
                     search_query = f'DeviceName = "{host}"'
 
                     print(f"Initiating investigation ({search_window_minutes}m window)...")
@@ -223,3 +224,4 @@ def main():
 if __name__ == "__main__":
 
     main()
+
