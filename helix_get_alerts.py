@@ -71,7 +71,7 @@ def get_latest_alerts(token, api_key):
         "filter[status]": "NEW"
     }
 
-    print(f"Fetching summary for the latest 10 alerts...")
+    print(f"Fetching summary for the latest alert...")
     response = requests.get(ALERTS_ENDPOINT, headers=headers, params=params)
 
     if response.status_code == 200:
@@ -190,4 +190,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()
