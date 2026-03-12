@@ -11,7 +11,7 @@ base_url = 'https://us.etp.trellix.com/'
 
 
 def trellix_api_auth(key=api_key, id=client_id, token=client_token, scopes=allowed_scopes):
-    iam_url = "https://auth.trellix.com/auth/realms/IAM/protocol/openid-connect/token"
+    iam_url = "https://iam.cloud.trellix.com/iam/v1.0/token"
 
     session = requests.Session()
 
@@ -70,6 +70,7 @@ session = open_trellix_session()
 #print(get_alert(session,alert_id).text)
 print(search_alerts(session).text)
 close_trellix_session(session)
+
 
 
 
