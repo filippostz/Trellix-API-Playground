@@ -8,7 +8,10 @@ client_token = 'client_token'
 total_scopes = "etp.accs.ro etp.accs.rw etp.admn.ro etp.admn.rw etp.alrt.ro etp.alrt.rw etp.conf.ro etp.conf.rw etp.domn.ro etp.domn.rw etp.quar.ro etp.quar.rw etp.rprt.ro etp.rprt.rw etp.trce.ro etp.trce.rw"
 allowed_scopes = "etp.accs.ro etp.accs.rw etp.alrt.ro etp.alrt.rw etp.domn.ro etp.quar.ro etp.quar.rw etp.trce.ro etp.trce.rw"
 base_url = 'https://us.etp.trellix.com/'
-
+#US Instance: https://us.etp.trellix.com
+#EMEA Instance: https://eu.etp.trellix.com
+#APJ Instance: https://ap.etp.trellix.com
+#CA Instance: https://ca.etp.trellix.com
 
 def trellix_api_auth(key=api_key, id=client_id, token=client_token, scopes=allowed_scopes):
     iam_url = "https://iam.cloud.trellix.com/iam/v1.0/token"
@@ -70,6 +73,7 @@ session = open_trellix_session()
 #print(get_alert(session,alert_id).text)
 print(search_alerts(session).text)
 close_trellix_session(session)
+
 
 
 
