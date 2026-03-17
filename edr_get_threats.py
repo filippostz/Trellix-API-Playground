@@ -10,7 +10,7 @@ CLIENT_TOKEN = ''
 
 DEFAULT_SCOPES = "soc.act.tg soc.cfg.r soc.cfg.w mi.user.investigate"
 BASE_URL = "https://api.manage.trellix.com"
-IAM_URL = "https://auth.trellix.com/auth/realms/IAM/protocol/openid-connect/token"
+IAM_URL = "https://iam.cloud.trellix.com/iam/v1.0/token"
 
 
 def get_epoch_utc_millis(past_days: int) -> int:
