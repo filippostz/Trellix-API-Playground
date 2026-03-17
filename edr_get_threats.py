@@ -74,7 +74,7 @@ def get_edr_threats(session: requests.Session, days: int) -> dict:
 
 
 def main():
-    days_to_query = 10
+    days_to_query = 30
 
     try:
         with create_trellix_session(
