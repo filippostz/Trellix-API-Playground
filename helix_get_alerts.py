@@ -175,12 +175,15 @@ def main():
                     # Extract the specific fields you requested
                     process_name = event_telemetry.get("process", "Not Found")
                     agent_id = event_telemetry.get("agentid", "Not Found")
+                    alert_attributes = alert_data.get("attributes", {})
+                    alert_name =  alert_attributes.get("name", "No Name")
 
                     # Add them to our set as a tuple
                     unique_telemetry.add((process_name, agent_id))
 
                 # Print the extracted data for this specific alert
                 print(f"\nAlert ID: {alert_id}")
+                print(f"\nAlert Name: {alert_name}")
                 for proc, ag_id in unique_telemetry:
                     print(f"  -> Process Name: {proc}")
                     print(f"  -> Agent ID:     {ag_id}")
