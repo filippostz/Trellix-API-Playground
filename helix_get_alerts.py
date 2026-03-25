@@ -66,8 +66,10 @@ def get_latest_alerts(token, api_key):
 
     # Corrected API query parameters with mix of object [eq] and string filters
     params = {
-        "page[limit]": 1,
+        #"page[limit]": 1,
         "filter[name][eq]": "Trellix DLP: exfil to azure blob",
+        #"filter[fromDate]": "2026-03-25T08:06:16.067Z",
+        #"filter[toDate]": "2026-03-25T08:18:16.067Z",
         "filter[status]": "NEW"
     }
 
