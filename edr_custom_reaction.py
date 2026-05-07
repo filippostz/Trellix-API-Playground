@@ -165,7 +165,7 @@ def main():
                 API_KEY, CLIENT_ID, CLIENT_TOKEN, DEFAULT_SCOPES
         ) as session:
             #custom_reaction_host(session, custom_action_name, hostname)
-            custom_reaction_host(session, "_Ping", "TAP01")
+            custom_reaction_host(session, "_Ping", "HOSTNAME")
 
     except Exception as e:
         print(f"An error occurred: {e}", file=sys.stderr)
