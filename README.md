@@ -19,7 +19,7 @@ Before running any script, you must supply your own credentials (`API_KEY`, `CLI
 | ePO | `epo_events.py` | Fetches and paginates threat events from Trellix ePolicy Orchestrator (ePO) |
 | ETP | `etp_get_alert.py` | Searches and retrieves email threat alerts from Trellix Email Threat Prevention |
 | ETP (FireEye legacy) | `etp_get_alerts_fireeye.py` | Searches alerts and message traces via the legacy FireEye ETP API endpoint |
-| Helix / XDR | `helix_get_alerts.py` | Fetches XDR alerts and enriches them with full forensic telemetry details |
+| Helix | `helix_get_alerts.py` | Fetches XDR alerts and enriches them with full forensic telemetry details |
 | Helix | `helix_send_event_to_integration-hub.py` | Sends a custom event payload to the Helix Integration Hub |
 | HX | `hx_get_alerts.py` | Authenticates against Trellix HX and retrieves the latest endpoint alerts |
 | HX + MISP | `hx_historical_search_misp.py` | Integrates MISP threat intelligence with HX historical search to hunt IOCs and tag results back in MISP |
