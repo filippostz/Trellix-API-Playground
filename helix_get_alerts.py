@@ -1,6 +1,6 @@
 import requests
-import json
 import base64
+from datetime import datetime, timedelta, timezone
 
 # ==========================================
 # Configuration & Credentials
@@ -53,10 +53,8 @@ def get_access_token(client_id, client_secret, scopes):
         response.raise_for_status()
 
 
-def get_latest_alerts(token, api_key):
-    """
-    Fetches the latest 10 NEW alerts matching the specific DLP rule.
-    """
+def get_latest_alerts(token, api_key, past_days=None, from_date=None, to_date=None):
+
     headers = {
         "Authorization": f"Bearer {token}",
         "x-api-key": api_key,
@@ -64,16 +62,30 @@ def get_latest_alerts(token, api_key):
         "Accept": "application/vnd.api+json"
     }
 
-    # Corrected API query parameters with mix of object [eq] and string filters
+    # Base parameters
     params = {
-        #"page[limit]": 1,
-        "filter[name][eq]": "Trellix DLP: exfil to azure blob",
-        #"filter[fromDate]": "2026-03-25T08:06:16.067Z",
-        #"filter[toDate]": "2026-03-25T08:18:16.067Z",
         "filter[status]": "NEW"
+        # "page[limit]": 10,
+        # "filter[name][eq]": "Trellix DLP: exfil to azure blob",
     }
 
-    print(f"Fetching summary for the latest alert...")
+    # 1. Handle dynamic past days calculation
+    if past_days is not None:
+        now = datetime.now(timezone.utc)
+        start_date = now - timedelta(days=past_days)
+
+        # Format to ISO 8601 with milliseconds precision: YYYY-MM-DDTHH:MM:SS.mmmZ
+        params["filter[fromDate]"] = start_date.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
+        params["filter[toDate]"] = now.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
+
+    # 2. Fallback to explicit window time range strings if past_days isn't used
+    else:
+        if from_date:
+            params["filter[fromDate]"] = from_date
+        if to_date:
+            params["filter[toDate]"] = to_date
+
+    print(f"Fetching summary for the latest alerts with params: {params}")
     response = requests.get(ALERTS_ENDPOINT, headers=headers, params=params)
 
     if response.status_code == 200:
@@ -121,7 +133,7 @@ def main():
 
         # 2. Fetch the initial summary list
         print("\n--- Phase 1: Fetching Alert Summaries ---")
-        summary_response = get_latest_alerts(token, API_KEY)
+        summary_response = get_latest_alerts(token, API_KEY, past_days=2)
 
         # JSON:API spec puts the list of items inside a 'data' array
         alerts_list = summary_response.get("data", [])
