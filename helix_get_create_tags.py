@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Trellix XDR API - Tags Management
+Trellix Helix API - Tags Management
 Handles fetching and creating system/custom tags.
 """
 
