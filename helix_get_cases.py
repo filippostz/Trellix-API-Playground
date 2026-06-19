@@ -18,7 +18,7 @@ API_KEY = "YOUR_API_KEY"
 TOKEN_URL = "https://iam.cloud.trellix.com/iam/v1.0/token"
 API_BASE_URL = "https://api.manage.trellix.com"
 
-# Cases utilize the Alert scope mapping (xdr.alr.r)
+# Cases utilize the Alert scope mapping (xdr.alr.r). For new/edit cases (xdr.alr.rw).
 XDR_SCOPES = ["xdr.alr.r"]
 
 
