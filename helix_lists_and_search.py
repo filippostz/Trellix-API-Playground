@@ -147,7 +147,7 @@ def main():
         lists_response = client.get_lists()
 
         if lists_response:
-            lists_list = lists_response.get("data", [])
+            lists_list = lists_response.get("results", [])
             print(f"[+] Successfully fetched {len(lists_list)} lists.\n")
             print(json.dumps(lists_response, indent=2))
 
